@@ -1,0 +1,17 @@
+!!!
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      = page_title
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag :defaults
+  %body
+    =image_tag 'logo.jpg'
+    -if logged_in?
+      =link_to 'assignment', efforts_url, :class => 'menu-link'
+      =link_to 'breakdown', breakdown_url, :class => 'menu-link'
+      =link_to_if @current_user.has_permission?(:overviews, :index), 'overview', overviews_url, :class => 'menu-link' do end
+      =link_to 'logout', logout_url, :class => 'menu-link'
+    =yield
+#spinner-div{:style => "position: absolute; left: 50%; top: 50%;"}
+  =image_tag "spinner.gif", :id => "spinner", :style => "display: none; position: relative; left: -16px; top: -16px;"

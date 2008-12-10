@@ -1,0 +1,10 @@
+page.replace_html "efforts", :partial => 'shared/efforts_on_timeline'
+page.replace_html "assignment_form_fields", :partial => 'form'
+page.replace_html "feedback_space", :partial => "successful_create"
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)
+@results[:requested].each{|effort| page << "if( $('effort_#{effort.id}') ){ Effect.Pulsate('effort_#{effort.id}',{duration:1.5, from:0.3, pulses:3}); }" unless effort.start.to_date > Time.now.to_date }
+
+#  page << "if( $('effort_#{effort.id}') ){ Effect.Pulsate('effort_#{effort.id}',{duration:1.5, from:0.3, pulses:3}); }"
+#  Effect.Pulsate("effort_43",{duration:1.5, from:0.3, pulses:3})
+
+#  @results[:requested].each{|effort| page.visual_effect(:pulsate, "effort_#{effort.id}", :from => 0.3, :pulses => 3, :duration => 1.5) unless effort.start.to_date > Time.now.to_date }

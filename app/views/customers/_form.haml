@@ -1,0 +1,12 @@
+-remote_form_for @customer do |f|
+  =error_messages_for 'customer'
+  %p
+    Name:
+  %p
+    =f.text_field :name
+
+  %p
+    Billing Cycle:
+  %p
+    =f.select :billing_cycle_id, @billing_cycles.collect {|p| [ p.name, p.id ] }
+  =submit_tag

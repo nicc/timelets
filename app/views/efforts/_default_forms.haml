@@ -1,0 +1,23 @@
+%table
+  %tr
+    %td.effort_form_cell
+      #counter
+        =link_to_function("Track Effort", "$('counter_form').toggle();")
+        #counter_form{:style => "display: none;"}
+          %table
+            %tr
+              %td{:style => "vertical-align: top; text-align: center;", :align => "center"}
+                #timer_form_fields
+                  =render :partial => 'timer_form'
+
+    %td.effort_form_cell
+      #assignment
+        =link_to_function("Assign Effort", "$('assignment_form').toggle();")
+        #assignment_form{:style => "display: none;"}
+          %table
+            %tr
+              %td{:style => "vertical-align: top; text-align: center;", :align => "center"}
+                -form_remote_tag :url => efforts_url do
+                  #assignment_form_fields
+                    =render :partial => 'form'
+                  =submit_tag "Do it!"

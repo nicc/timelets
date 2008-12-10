@@ -1,0 +1,66 @@
+-remote_form_for :contract, @contract, :url => customer_contract_path(@customer, @contract), :method => method do |f|
+  =error_messages_for :contract
+  %p
+    Contract Type
+  %p
+    =select_tag(:contract_type, options_for_select([ [""], ["Point Contract", "PointContract"], ["Rate Contract", "RateContract"] ], @contract.type.to_s), { :include_blank => true })
+    =observe_field 'contract_type', :function => "switch_contract_type(value);"
+
+  %p
+    Customer:
+  %p
+    =select @contract, :customer_id, @customers.collect{|c| [c.name, c.id] }, :selected => @contract.customer_id || params[:customer_id].to_i
+
+  %p
+    Name:
+  %p
+    =f.text_field :name
+  
+  %p
+    Description:
+  %p
+    =f.text_field :description
+
+  %p
+    Retainer Cost:
+  %p
+    =f.text_field :retainer_cost
+  
+  %p
+    Retainer includes AH work?
+  %p
+    =f.check_box :retainer_includes_ah
+
+  #rate-contract-fields{:style => ('display: none;' if @contract.type != "RateContract") }
+    %p
+      Retainer Hours:
+    %p
+      =f.text_field :retainer_hours, :class => 'rate-contract-field', :disabled => (@contract.type != "RateContract")
+
+    %p
+      OH Hourly Rate:
+    %p
+      =f.text_field :oh_hourly_rate, :class => 'rate-contract-field', :disabled => (@contract.type != "RateContract")
+
+    %p
+      AH Hourly Rate:
+    %p
+      =f.text_field :ah_hourly_rate, :class => 'rate-contract-field', :disabled => (@contract.type != "RateContract")
+
+  #point-contract-fields{:style => ('display: none;' if @contract.type != "PointContract") }
+    %p
+      Retainer Points:
+    %p
+      =f.text_field :retainer_points, :class => 'point-contract-field', :disabled => (@contract.type != "PointContract")
+
+    %p
+      Point Rate:
+    %p
+      =f.text_field :point_rate, :class => 'point-contract-field', :disabled => (@contract.type != "PointContract")
+
+    %p
+      AH Point Adjustment:
+    %p
+      =f.text_field :ah_point_adjustment, :class => 'point-contract-field', :disabled => (@contract.type != "PointContract")
+
+  =submit_tag

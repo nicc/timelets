@@ -1,0 +1,2 @@
+-for effort in @todays_efforts
+  %div{:id => "effort_#{effort.id}", :onclick => remote_function(:url => effort_url(effort), :method => :get), :style => "width: #{(effort.duration / 60)}px; left: #{((effort.start.hour) * 60) + (effort.start.min)}px;"}

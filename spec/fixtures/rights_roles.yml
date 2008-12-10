@@ -1,0 +1,9 @@
+## YAML Template.
+
+ops_manager_overviews_index:
+  right_id: 1
+  role_id: 1
+
+ops_manager_overviews_select_user:
+  right_id: 2
+  role_id: 1

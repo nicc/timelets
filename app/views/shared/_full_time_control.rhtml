@@ -1,0 +1,9 @@
+<%= text_field object_name, method, options %>
+  <div id="display_<%= "#{object_name}_#{method}" %>" class="english_time_control_display">
+    <br/>
+  </div>
+  
+  <%= observe_field "#{object_name}_#{method}".to_sym, 
+                    :url => full_time_url, 
+                    :frequency => 1, 
+                    :with => "'input_time='+encodeURIComponent(value)+'&model=#{object_name}&method=#{method}'" %>

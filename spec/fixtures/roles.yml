@@ -1,0 +1,14 @@
+operations_manager:
+  id: 1
+  name: Operations Manager
+  description: Manages workforce and implementation.
+
+account_manager:
+  id: 2
+  name: Account Manager
+  description: Manages customers and contracts.
+
+debters_clerk:
+  id: 3
+  name: Debters Clerk
+  description: Handles billing runs and invoicing.

@@ -1,0 +1,77 @@
+So this is Timelets, aimed at short interval task management for invoicing.
+
+I developed this for a previous employer, the target users were linux system 
+admins, who had many tasks to keep track of during any given day.  The company 
+has since disbanded for a number of reasons, and the owner has kindly allowed me 
+to release the codebase.  It is by no means complete, I was hoping someone would 
+want to take up the batton and help me finish it.  It's not very configurable at
+present (ito of logos etc), but there isn't too much to conifgure yet, so that
+shouldn't be too hard to add.
+
+As it stands it's functional from the input side... users can log efforts in a 
+number of ways, review their efforts historically, and an operations manager can 
+view anyone's.  The interface is ajax-heavy but nice and clean and usable.
+What isn't done is the billing/reporting side of things.  Generating invoices 
+etc.  The admin interface for user/customer/contracts management is also not 
+done yet.  We were using the app in production, doing billing from it and it was 
+working fine, we were just managing it out of console in the interim.
+
+I've left a sqlite development db so that anyone can just grab the code and pull 
+the app up immediately. I'm hoping that when you've seen it you'll drop 
+everything you're doing right now and take this project further.  
+There are 2 users, a normal user (login: 'user'; password: 'test'), and an 
+operations manager user (login: 'manager'; password: 'test').  There's a single 
+Customer, with one of each Contract type.  No Efforts though, you'll have to 
+allocate some.
+
+
+So... if you're interested, I'll do a quick run through the model...
+
+Users have Efforts, Efforts belong to a Contract, which is an STI superclass, 
+parent to PointContract and RateContract (explained below).  Contracts belongs 
+to a Customer, who has a BillingCycle.  The BillingCycle thing hasn't been taken 
+very far yet, I would consider having the Contracts belong to a BillingCycle, 
+rather than the Customer.  Then there's the standard Role based authentication, 
+except that only controllers that care about access overwrite authenticated? 
+from restful_authentication.  This was so that I didn't have to manage rights 
+for controllers that all users will have access to.
+
+CONTRACTS:
+Rate contracts have office hours and after hours rates, while point contracts 
+have a point rate, and an adjustment to be applied to time acrued after hours.  
+Each user can have a point value... so that seniors can be charged at a higher 
+point/hour rate than juniors.  Both contract types maintain the idea of a 
+retainer, either of points or hours, and both share a flag indicating whether 
+the retainer includes after hours work. At the moment efforts are associated 
+with contracts, but none of the reporting/billing structure is done. If a 
+customer only has one contract the front end will hide the selection from you, 
+assuming that you're after that single contract.
+
+EFFORTS:
+Efforts can be calculated from any 2 of the 3 references of a duration:  start, 
+stop and duration.  If all 3 are provided they will be checked for accuracy.  
+The front end uses auto-complete Chronic date parsing for start and stop, and 
+accepts duration in minutes.  If you allocate an effort across 2 days it will be 
+split into 2 efforts, starting and stopping at midnight.  This helped for daily 
+efforts calculation.   If a user allocates an effort that overlaps with another 
+effort, it will adjust any existing efforts accordingly.  It will split efforts 
+into 2, shorten, lengthen or even remove them completely.  the user is informed 
+of these changes.  The idea is to use this feedback to eventually warn of the 
+changes first and have the user confirm, and possibly even adjust the existing 
+or allocated efforts.
+
+INTERFACE:
+There is a nice timeline at the top of the page, with date selection and a daily 
+timeline where efforts appear as bars indicating duration.  They can be selected 
+and the feedback area will provide details of the effort.  This timeline is 
+intrinsic to all time-based work, and tends to stay on most pages.  Efforts can
+be allocated by starting a timer (the start time can be specified in natural 
+language), or by explicitly allocating the effort by providing at least 2 of the 
+3 references to a duration mentioned above.  These are provided from seperate 
+forms, meaning efforts can be explicitly allocated while a timer is running.
+The timed efforts are held as an incomplete Effort record, a user can only have 
+one incomplete effort at a time.  So if browser crashes or user logs off, the 
+timer is still "running".
+
+If you have any questions, or would like a fork, please dont hesitate to contact 
+me, I will be of as much help as I can.

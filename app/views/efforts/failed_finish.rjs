@@ -1,0 +1,4 @@
+page.select('#efforts div').each{|div| div.removeClassName('selected-effort')}
+
+page.replace_html "feedback_space", "Your effort could not be finished.  Make sure your stop time has been parsed correctly before trying again."
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)

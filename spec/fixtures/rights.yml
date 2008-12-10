@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+overviews_index:
+  id: 1
+  name: overviews: index
+  controller: overviews
+  action: index
+
+overviews_select_user:
+  id: 2
+  name: overviews: select_user
+  controller: overviews
+  action: select_user

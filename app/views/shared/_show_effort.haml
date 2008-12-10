@@ -1,0 +1,31 @@
+%table
+  %tr
+    %td.label
+      Name:
+    %td.label
+      Customer:
+    %td.label
+      Contract:
+    %td.label
+      Ticket Ref:
+    %td.label
+      Duration:
+    %td.label
+      Start:
+    %td.label
+      Stop:
+  %tr
+    %td
+      =@effort.name
+    %td
+      =@effort.contract.customer.name
+    %td
+      =@effort.contract.name
+    %td
+      =@effort.ticket_reference.blank? ? "none" : @effort.ticket_reference
+    %td
+      =@effort.duration.to_time_interval
+    %td
+      =@effort.start.strftime('%Y-%m-%d at %H:%M:%S')
+    %td
+      =@effort.stop ? @effort.stop.strftime('%Y-%m-%d at %H:%M:%S') : "IN PROGRESS!!"

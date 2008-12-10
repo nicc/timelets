@@ -1,0 +1,9 @@
+%tr
+  %td.align_left
+    =contract.name
+  %td.align_right
+    =link_to_remote 'View', {:url => customer_contract_url(@customer, contract), :method => :get, :update => :admin_operations}
+    | 
+    =link_to_remote 'Edit', {:url => edit_customer_contract_url(@customer, contract), :method => :get, :update => :admin_operations}
+    | 
+    =link_to_remote 'Delete', {:url => customer_contract_url(@customer, contract), :method => :delete, :confirm => "Are you sure you want to delete #{contract.name} from #{@customer.name}'s contracts?"}

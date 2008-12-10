@@ -1,0 +1,2 @@
+replace_list(page, 'customer', {:collection => @customers})  #  TODO: Consider a better way to get page into helpers
+replace_admin_ops(page, 'count')  #  TODO: Consider a better way to get page into helpers

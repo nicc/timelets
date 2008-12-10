@@ -1,0 +1,14 @@
+#calendar
+  =render :partial => 'shared/calendar', :locals => {:and_then => 'efforts_breakdown'}
+#todays_effort
+  #timeline
+    =render :partial => 'shared/time_line'
+#feedback_space
+  Pick a day above the timeline to see a breakdown of your efforts.
+
+#operational_area
+  %table
+    %tr
+      %td.center
+        #breakdown
+          =render :partial => 'shared/daily_breakdown', :locals => {:user => @current_user}

@@ -1,0 +1,1 @@
+page.alert "In Progress Task:  #{@current_effort.name} \n\nDuration thus far:  #{@current_effort.duration.to_time_interval}"

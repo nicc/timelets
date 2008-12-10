@@ -1,0 +1,4 @@
+page.replace_html "timer_form_fields", :partial => 'timer_form'
+page.replace_html "timer_stop_controls", :partial => 'timer_stop_controls'
+page.replace_html "feedback_space", "A timer has been started for #{@timed_effort.name}.  Use the controls added to the form to stop it when required."
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)

@@ -1,0 +1,4 @@
+page.replace_html("feedback_space", :partial => "shared/show_effort")
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)
+page.select('#efforts div').each{|div| div.removeClassName('selected-effort')}
+page["effort_#{@effort.id}"].addClassName('selected-effort')

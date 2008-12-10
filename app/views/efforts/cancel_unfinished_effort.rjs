@@ -1,0 +1,3 @@
+page.replace_html "timer_form_fields", :partial => 'timer_form'
+page.replace_html "feedback_space", "Your timed effort has been cancelled."
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)

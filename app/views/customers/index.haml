@@ -1,0 +1,24 @@
+#feedback_space
+  Customer list is on the left, with links to various operations, which all take place in the panel to the right.  Easy no?
+
+#operational_area
+  %table
+    %tr
+      %td.effort_form_cell.align_left
+        #list
+          %table
+            %thead
+              %th.align_left
+                Customer [ 
+                =link_to_remote 'New', {:url => new_customer_url, :method => :get, :update => :admin_operations}
+                ]
+              %th.align_right
+                Operations
+            %tbody#list-content
+              =render :partial => 'customer', :collection => @customers
+
+      %td.effort_form_cell.align_left
+        #admin_operations
+          =render :partial => 'count'
+        
+      

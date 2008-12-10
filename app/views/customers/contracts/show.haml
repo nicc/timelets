@@ -1,0 +1,49 @@
+Contract Type:
+=@contract.type
+%br
+
+Customer:
+=@contract.customer.name
+%br
+
+Name:
+=@contract.name
+%br
+
+Description:
+=@contract.description
+%br
+
+Retainer Cost:
+=@contract.retainer_cost
+%br
+
+Retainer Includes After Hours work:
+=(@contract.retainer_includes_ah ? "yes" : "no")
+%br
+
+-if @contract.class == RateContract
+  Retainer Hours:
+  =@contract.retainer_hours
+  %br
+
+  Hourly Rate:
+  =@contract.oh_hourly_rate
+  %br
+
+  AH Hourly Rate:
+  =@contract.ah_hourly_rate
+  %br
+
+-if @contract.class == PointContract
+  Retainer Points:
+  =@contract.retainer_points
+  %br
+
+  Point Rate:
+  =@contract.point_rate
+  %br
+
+  AH Point Adjustment:
+  =@contract.ah_point_adjustment
+  %br

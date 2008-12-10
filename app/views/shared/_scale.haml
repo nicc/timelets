@@ -1,0 +1,7 @@
+#hour_end{:style => "left: 0"}
+-95.times do |n|
+  -if (n+1) % 4 == 0
+    #hour_line{:style => "left: #{((n+1)*15)-2}px"}
+  -else
+    #fifteen_line{:style => "left: #{((n+1)*15)-1}px"}
+#hour_end{:style => "left: 1438px;"}

@@ -1,0 +1,11 @@
+if @contracts
+  page.replace_html "#{params[:form]}_contract_cell", select("#{params[:form]}_effort", :contract_id, @contracts.collect{|c| [c.name, c.id] }, {}, {:id => "#{params[:form]}_effort_contract"})
+  if @contracts.size > 1  
+    page["#{params[:form]}_contract_row"].show
+  else
+    page["#{params[:form]}_contract_row"].hide
+  end
+else
+  page.replace_html "#{params[:form]}_contract_cell", select("#{params[:form]}_effort", :contract_id, [""], {}, {:id => "#{params[:form]}_effort_contract"})
+  page["#{params[:form]}_contract_row"].hide
+end

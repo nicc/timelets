@@ -1,0 +1,6 @@
+if @created
+  replace_admin_ops(page, 'count')  #  TODO: Consider a better way to get page into helpers
+  replace_list(page, 'contract', {:collection => @contracts})  #  TODO: Consider a better way to get page into helpers
+else
+  page.replace_html 'admin_operations', :partial => 'new'
+end

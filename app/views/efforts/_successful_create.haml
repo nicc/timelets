@@ -1,0 +1,15 @@
+Time successfully allocated for 
+=@results[:requested].first.name
+\.  Click it above to see more info.
+
+-removed_count = @results[:deleted].size - @results[:created].size
+-if removed_count > 0
+  %br
+  =removed_count
+  of your efforts was overlapped by your most recent allocation, and have been removed completely.
+
+-if @results[:created].size > 0
+  %br
+  =@results[:created].size
+  of your efforts were adjusted to make room for your most recent allocation.
+  

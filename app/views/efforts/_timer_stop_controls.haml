@@ -1,0 +1,14 @@
+-form_remote_tag :url => finish_effort_url do
+  %table.effort_form
+    %tr
+      %td
+        Stop (defaults to 'now')
+      %td
+        =full_time :timed_effort, :stop, :autocomplete => "off"
+    %tr
+      %td
+        =link_to_remote 'Check Duration', :url => check_unfinished_duration_url
+      %td
+        =submit_tag "Stop Timer!"
+        or
+        =link_to_remote 'cancel', :url => cancel_unfinished_effort_url, :confirm => "Are you sure you want to cancel the timer for #{@timed_effort.name}"

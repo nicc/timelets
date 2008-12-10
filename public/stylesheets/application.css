@@ -1,0 +1,266 @@
+body {
+    font-family: Verdana, Arial, Tahoma;
+    font-size: 14px;
+}
+
+div#calendar {
+    margin: 5px;
+    height: 40px;
+    text-align: center;
+    border-style:solid; 
+    border-color:#000000; 
+    border-width:1px; 
+    position:relative;
+    font-size: 10px;
+    background-color: #EEEEEE;
+}
+
+div#calendar table {
+    padding: 0px;
+    margin: 0px;
+}
+
+div#calendar span {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+div#calendar span.selected {
+    padding-left: 1px;
+    padding-right: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #000000;
+    background-color: #FFFFFF;
+}
+
+div#todays_effort {
+    margin: 5px;
+    height: 60px;
+    text-align: center;
+}
+
+div#feedback_space {
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+    margin: 5px;
+    min-height: 75px;
+    margin-top: 20px;
+    text-align: center;
+    vertical-align: center;
+}
+
+div#operational_area table {
+    width: 100%;
+}
+
+div#counter {
+    padding: 5px;
+    margin: 5px;
+}
+
+div#counter_form {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+    margin: 5px;
+}
+
+div#assignment {
+    
+    padding: 5px;
+    margin: 5px;
+    
+}
+
+div#assignment_form {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.effort_form_cell {
+    width: 50%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.spinner_cell {
+    position: absolute;
+    width: 32px;
+    text-align: center;
+    vertical-align: top;
+}
+
+a:link, a:active, a:visited {
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #cf171e;
+}
+
+div#calendar a:link, div#calendar a:active, div#calendar a:visited, div#calendar a:hover {
+    font-weight: normal;
+}
+
+.effort_form {
+    text-align: left;
+}
+
+.effort_form td {
+    padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: top;
+}
+
+
+#timeline {
+    height: 60px; 
+    width: 100%; 
+    border-style:solid; 
+    border-color:#000000; 
+    border-width:1px; 
+    position:relative;
+    overflow: auto;
+}
+
+#scale { 
+    position: relative; 
+    top: 35px;
+}
+
+#hour_end {
+    display: inline-block; 
+    width: 2px; 
+    height: 10px; 
+    background-color: #CCCCCC; 
+    position: absolute; 
+}
+
+#hour_line {
+    display: inline-block; 
+    width: 4px; 
+    height: 10px; 
+    background-color: #CCCCCC; 
+    position: absolute;
+}
+
+#fifteen_line {
+    display: inline-block; 
+    width: 2px; 
+    height: 10px; 
+    background-color: #CCCCCC; 
+    position: absolute;
+}
+
+#legend {
+    position: relative; 
+    top: 25px;
+}
+
+#hour {
+    font-size: 8px; 
+    text-align: center; 
+    display: inline-block; 
+    position: absolute;
+}
+
+#efforts div {
+    display: inline-block; 
+    height: 10px; 
+    position: absolute; 
+    top: 8px; 
+    background-color: #a0ffab; 
+    border-style:solid; 
+    border-width:1px; 
+    border-color:#000000;
+    cursor: pointer;
+}
+
+#efforts div.selected-effort {
+    background-color: #fff692;
+}
+
+#feedback_space table {
+    width: 100%;
+}
+
+#feedback_space table td {
+    vertical-align: top;
+}
+
+#feedback_space table td.label{
+    font-weight: bold;
+    width: 14%;
+}
+
+.menu-link {
+    position: relative;
+    top: -6px;
+    padding-right: 10px;
+}
+
+table.effort_form input, select {
+    border-width: 1px;
+    border-style: sold;
+    border-color: #000000;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+}
+
+#breakdown {
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #000000;
+    width: 50%;
+    text-align: left;
+    vertical-align: top;
+    display: inline-block;
+    padding: 5px;
+}
+
+#breakdown li {
+    list-style-type: none;
+}
+
+#dashed_border {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#admin_operations {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 10px;
+    margin: 10px;
+    margin-left: 15px;
+    margin-right: 2px;
+}
+
+#list {
+    border-style: dashed;
+    border-width: 1px;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 15px;
+    margin-left: 2px;
+}
+
+.align_left {
+    text-align: left;
+}
+
+.align_right {
+    text-align: right;
+}

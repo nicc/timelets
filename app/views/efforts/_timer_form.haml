@@ -1,0 +1,32 @@
+-form_remote_tag :url => start_effort_url do
+  =error_messages_for 'timed_effort' if @timed_effort
+  %table.effort_form
+    %tr
+      %td
+        Customer
+      %td
+        =select_tag(:effort_customer, options_for_select([""] + @customers.collect {|c| [ c.name, c.id ] }, (@customer.id if @customer)), {:id => 'timed_effort_customer', :disabled => !@timed_effort.nil?})
+        =observe_field :timed_effort_customer, :with => "'effort_customer=' + value + '&form=timed'", :url => select_effort_customer_url
+    %tr#timed_contract_row{:style => "#{'display: none;' unless @timed_effort}"}
+      %td
+        Contract
+      %td#timed_contract_cell
+        =select(:timed_effort, :contract_id, @contracts_options || [""], {}, {:id => 'timed_effort_contract', :disabled => !@timed_effort.nil?})
+    %tr
+      %td
+        Name
+      %td
+        =text_field :timed_effort, :name, :disabled => !@timed_effort.nil?
+    %tr
+      %td
+        Ticket Reference
+      %td
+        =text_field :timed_effort, :ticket_reference, :disabled => !@timed_effort.nil?
+    %tr
+      %td
+        Start (defaults to 'now')
+      %td
+        =full_time :timed_effort, :start, :autocomplete => "off", :disabled => !@timed_effort.nil?
+  =submit_tag "Start Timer!" unless @timed_effort
+#timer_stop_controls
+  =render :partial => 'timer_stop_controls' if @timed_effort

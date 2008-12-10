@@ -1,0 +1,5 @@
+page.replace_html "efforts", :partial => 'shared/efforts_on_timeline'
+page.replace_html "timer_form_fields", :partial => 'timer_form'
+page.replace_html "feedback_space", :partial => "successful_create"
+page.visual_effect(:highlight, "feedback_space", :duration => 0.5)
+@results[:requested].each{|effort| page << "if( $('effort_#{effort.id}') ){ Effect.Pulsate('effort_#{effort.id}',{duration:1.5, from:0.3, pulses:3}); }" }

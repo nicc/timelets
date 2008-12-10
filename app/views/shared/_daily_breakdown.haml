@@ -1,0 +1,16 @@
+- if user
+  %strong
+    Daily total:
+  -interval = user.time_worked(@selected_date).to_time_interval
+  =interval.blank? ? '0' : interval
+  %br
+  %br
+  - unless interval.blank?
+    %strong
+      Breakdown:
+    %br
+    -user.daily_efforts(@selected_date).each do |e|
+      =e.contract.customer.name + " - " + e.name + ": " + e.duration.to_time_interval
+      %br
+- else
+  No user data.

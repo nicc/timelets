@@ -1,0 +1,18 @@
+#calendar
+  =render :partial => 'shared/calendar', :locals => {:and_then => 'efforts_index'}
+#todays_effort
+  #timeline
+    =render :partial => 'shared/time_line'
+#feedback_space
+  Como Estas bitches... So this is Timelets.  The link down to the right (click it,
+  you know you want to) toggles a form for explicit "this is when I did something"-style
+  allocations of effort.  The one to the left starts a timer for you, if you're that way 
+  inlcined.  There's a timeline above where you'll see your allocated efforts for the day,  
+  and this space is for feedback (click on your efforts or screw up your forms and you'll see).  
+  <strong>NB:</strong> In current version, the most recently alocated effort takes presedence, this means it will
+  take up any duration previously occupied by other efforts, which may be shortened or removed 
+  completely as a result.
+
+#operational_area
+  =render :partial => 'default_forms'
+  

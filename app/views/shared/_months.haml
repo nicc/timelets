@@ -1,0 +1,6 @@
+%table{:width => '100%'}
+  %tr
+    -1.upto 12 do |n|
+      %td
+        %span{:class => (@month == n ? 'selected' : nil) }
+          =link_to_remote Date::ABBR_MONTHNAMES[n], :url => set_month_url(:month => n, :and_then => and_then)

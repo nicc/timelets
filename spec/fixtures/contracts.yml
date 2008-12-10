@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  pointy: false
+  retainer_hours: 1
+  oh_hourly_rate: 9.99
+  ah_hourly_rate: 9.99
+  retainer_includes_ah: false
+  point_rate: 9.99
+  ah_point_adjustment: 9.99
+  customer_id: 1
+
+two:
+  pointy: false
+  retainer_hours: 1
+  oh_hourly_rate: 9.99
+  ah_hourly_rate: 9.99
+  retainer_includes_ah: false
+  point_rate: 9.99
+  ah_point_adjustment: 9.99
+  customer_id: 1

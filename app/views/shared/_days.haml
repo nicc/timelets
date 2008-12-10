@@ -1,0 +1,6 @@
+%table{:width => '100%'}
+  %tr
+    -1.upto(Time.days_in_month(@month, @year)) do |n|
+      %td
+        %span{:class => (@day == n ? 'selected' : nil) }
+          =link_to_remote n, :url => set_day_url(:day => n, :and_then => and_then)

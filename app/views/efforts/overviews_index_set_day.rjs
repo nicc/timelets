@@ -1,0 +1,5 @@
+page.replace_html 'days', :partial => 'shared/days', :locals => {:and_then => params[:and_then]}
+page.replace_html 'efforts', :partial => 'shared/efforts_on_timeline'
+page.visual_effect(:highlight, "timeline", :duration => 0.5)
+
+page.replace_html 'breakdown_cell', :partial => 'shared/daily_breakdown', :locals => {:user => @selected_user}

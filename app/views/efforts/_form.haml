@@ -1,0 +1,38 @@
+%table.effort_form
+  %tr
+    %td
+      Customer
+    %td
+      =select_tag(:effort_customer, options_for_select([""] + @customers.collect {|c| [ c.name, c.id ] }), {:id => 'assigned_effort_customer'})
+      =observe_field :assigned_effort_customer, :with => "'effort_customer=' + value + '&form=assigned'", :url => select_effort_customer_url
+  %tr#assigned_contract_row{:style => "display: none;"}
+    %td
+      Contract
+    %td#assigned_contract_cell
+      =select(:assigned_effort, :contract_id, [""], {}, {:id => 'assigned_effort_contract'})
+  %tr
+    %td
+      Name
+    %td
+      =text_field :assigned_effort, :name
+  %tr
+    %td
+      Ticket Reference
+    %td
+      =text_field :assigned_effort, :ticket_reference
+  %tr
+    %td
+      Duration (in minutes)
+    %td
+      =text_field :assigned_effort, :duration
+  %tr
+    %td
+      Start
+    %td
+      =full_time :assigned_effort, :start, :autocomplete => "off"
+  %tr
+    %td
+      Stop
+      =hidden_field_tag "assigned_effort[finished]", "true"
+    %td
+      =full_time :assigned_effort, :stop, :autocomplete => "off"

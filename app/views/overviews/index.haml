@@ -1,0 +1,35 @@
+#calendar
+  =render :partial => 'shared/calendar', :locals => {:and_then => 'overviews_index'}
+#todays_effort
+  #timeline
+    =render :partial => 'shared/time_line'
+#feedback_space
+  Overviews.  So you pick a person to the left below, and their breakdown for the day is displayed to the right. 
+  Their timeline will also be populated, which means you can display effort detail here by selecting it on the timeline
+  (efforts are displayed in order in the breakdown btw).  The calendar is also still operational, so pick your date as normal.
+  
+
+#operational_area
+  %table
+    %tr
+      %td.effort_form_cell
+        #overview_select_user
+          %strong
+            Select User
+          #dashed_border
+            %table
+              %tr
+                %td
+                  = select_tag 'user', "<option value=''></option>" + options_from_collection_for_select(@users, :id, :name, (@selected_user ? @selected_user.id : ""))
+                  = observe_field 'user', :url => select_user_overview_url, :with => :user
+
+      %td.effort_form_cell
+        #overview_breakdown
+          %strong
+            Breakdown
+          #dashed_border
+            %table
+              %tr
+                %td#breakdown_cell
+                  =render :partial => 'shared/daily_breakdown', :locals => {:user => @selected_user}
+  

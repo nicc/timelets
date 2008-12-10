@@ -1,0 +1,29 @@
+#feedback_space
+  Contracts list is on the left, with links to various operations, which all take place in the panel to the right.  Easy no?
+
+#operational_area
+  =javascript_include_tag 'contracts'
+  %table
+    %tr
+      %td.effort_form_cell.align_left
+        #list
+          %table
+            %thead
+              %th.align_left
+                Contracts for 
+                =@customer.name
+                [
+                =link_to 'Back', customers_url
+                | 
+                =link_to_remote 'New', {:url => new_customer_contract_url(@customer), :method => :get, :update => :admin_operations}
+                ]
+              %th.align_right
+                Operations
+            %tbody#list-content
+              =render :partial => 'contract', :collection => @contracts
+
+      %td.effort_form_cell.align_left
+        #admin_operations
+          =render :partial => 'count'
+        
+      
